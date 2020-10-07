@@ -300,12 +300,7 @@ with tf.Session(config=config) as sess:
                         acc_test += np.sum(prediction_test ==
                                            labels_bak_test[j]) / batch_size
                     acc_test /= test_batch_num
-                    if result_list[2] != [] and acc_test > max(result_list[2]):
-                        saver.save(sess, checkpoint_dir + 'model.ckpt', global_step=epoch * 100000 + i)
-                    # result_list[0].append(acc_training)
-                    # result_list[1].append(acc_validation)
-                    result_list[2].append(acc_test)
-                    # mean_10_list.append(np.mean(result_list[2][-10:]))
+                    
 
 
 
@@ -317,24 +312,5 @@ with tf.Session(config=config) as sess:
                       # 'validation = ', '%.5f' % (acc_validation),
                       'test = ', '%.5f' % (acc_test), '\n')
 
-                # print('\nsub:', test_subject,
-                #       '3_max_test', sorted(result_list[2])[-3:],
-                #       'max_mean_test', max(mean_10_list), '\n')
-
-            # if epoch % 5 == 0:
-            #     print('\nCNN_patch_width:', CNN_patch_width, '\n',
-            #           'CNN_patch_height:', CNN_patch_height, '\n',
-            #           'CNN_patch_number:', CNN_patch_number, '\n',
-            #           'patch_window_width:', patch_window_width, '\n',
-            #           ' patch_window_height:', patch_window_height, '\n',
-            #           ' g_size:', g_size, '\n',
-            #           ' l_size:', l_size, '\n',
-            #           ' glimpse_output_size:', glimpse_output_size, '\n',
-            #           ' cell_size:', cell_size , '\n',
-            #           ' num_glimpses:', num_glimpses, '\n',
-            #           ' variance:', variance, '\n',
-            #           ' M:', M, '\n',
-            #           'n_time_window:', n_time_window, '\n',
-            #           'last_lstm_size:', last_lstm_size, '\n\n',
-            #           )
+                
             epoch += 1
